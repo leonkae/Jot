@@ -1,3 +1,4 @@
+from cgitb import text
 from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
@@ -11,9 +12,15 @@ class Profile(models.Model):
     
     def __str__(self):
         return self.user.username
-    
-    
 
+class Comment(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    text = models.TextField(max_length=255)
+    created = models.DateTimeField(auto_now_add=True)
+    user_post = models.ForeignKey('Blogpost', on_delete=models.CASCADE,related_name = 'user_comments' )    
+    
+    def __str__(self):
+        return f'{self.user.username} Blogpost'
 
 class Blogpost(models.Model):
     '''blogpost model'''

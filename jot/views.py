@@ -9,3 +9,7 @@ def home(request):
 def login(request):
     '''login view'''
     return render(request, 'jotblog/login.html')
+
+def signup(request):
+    '''signup view'''
+    return render(request, 'jotblog/signup.html')

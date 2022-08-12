@@ -1,5 +1,59 @@
 {% extends 'jotblog/base.html' %} {% block content %}
-<h1>this is sign up</h1>
+<div class="container">
+  <h3>Sign Up here</h3>
+  <form method="POST" action="">
+    {% csrf_token %}
 
+    <div class="mb-3">
+      <label for="InputUsername" class="form-label">User name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        id="InputUsername"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="InputUsername" class="form-label">Email</label>
+      <input type="text" class="form-control" name="email" id="InputUsername" />
+    </div>
+
+    <div class="mb-3">
+      <label for="InputPassword" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="Password"
+        name="password1"
+      />
+    </div>
+
+    <div class="mb-3">
+      <label for="InputPassword" class="form-label">Confirm Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="Password"
+        name="password2"
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary" name="Login User">
+      Sign Up
+    </button>
+  </form>
+
+  <div class="error">
+    <p>{{form.errors}}</p>
+  </div>
+
+  <div class="border-top pt-3 mt-2">
+    <small class="text-muted">
+      Do you have an account ?
+      <a class="ml-2" href="{% url 'login' %}">Login</a>
+    </small>
+  </div>
+</div>
 
 {% endblock %}

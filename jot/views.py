@@ -8,6 +8,7 @@ from django.http import HttpResponseRedirect
 from django.urls import reverse
 from .models import *
 
+
 # Create your views here.
 
 def home(request):
@@ -34,4 +35,4 @@ def signup(request):
                 return redirect ('login')
         
         context = {'form':form}
-        return render(request, 'jotblog/signup.html')
+        return render(request, 'jotblog/signup.html', context)

@@ -1,10 +1,8 @@
 {% extends 'jotblog/base.html' %} {% block content %}
 
-<h1>this is login view</h1>
-
 <div class="container">
   <h3>Login here</h3>
-  <form action="" method="POST">
+  <form  method="POST">
     {% csrf_token %}
 
     <div class="mb-3">
@@ -14,9 +12,37 @@
         class="form-control"
         name="username"
         id="InputUsername"
+        required
       />
     </div>
+
+    <div class="mb-3">
+      <label for="InputUsername" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="Password"
+        name="password"
+
+      />
+    </div>
+
+    <button type="submit" class="btn btn-primary" name="Login User" >
+        login
+    </button>
   </form>
+
+  {% for message in messages %}
+    <p id="message" >{{message}}</p>
+  {% endfor %}
+
+  <div class="border-top pt-3 mt-2" >
+    <small class="text-muted">
+        Don't have an account ?
+        <a class="ml-2" href="{% url 'signup'%}"> Sign up </a>
+    </small>
+  </div>
+
 </div>
 
 {% endblock %}

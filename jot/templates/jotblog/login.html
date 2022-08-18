@@ -2,4 +2,21 @@
 
 <h1>this is login view</h1>
 
+<div class="container">
+  <h3>Login here</h3>
+  <form action="" method="POST">
+    {% csrf_token %}
+
+    <div class="mb-3">
+      <label for="InputUsername" class="form-label">User name</label>
+      <input
+        type="text"
+        class="form-control"
+        name="username"
+        id="InputUsername"
+      />
+    </div>
+  </form>
+</div>
+
 {% endblock %}

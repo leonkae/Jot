@@ -15,7 +15,7 @@ def home(request):
     '''home view'''
     return render(request, 'jotblog/home.html')
 
-def login(request):
+def loginPage(request):
     '''login view'''
     if request.user.is_authenticated:
         return redirect('home')
@@ -23,16 +23,15 @@ def login(request):
         if request.method == 'POST':
             username=request.POST.get('username')
             password=request.POST.get('password')
-            user = authenticate(request, username=username, password=password)
-            print(username,password)
             
+            user = authenticate(request, username=username, password=password)
+            print(username,password,user)
             if user is not None:
                 login(request,user)
-                return redirect('home')
+                return redirect ('home')
             else:
-                messages.info(request, 'Check username or Password')
-                
-        return render(request, 'jotblog/login.html')       
+                messages.info(request,'Check username or password !')
+    return render(request, 'jotblog/login.html')             
 
 def signup(request):
     '''signup view'''

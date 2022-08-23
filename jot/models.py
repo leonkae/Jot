@@ -26,7 +26,7 @@ class Blogpost(models.Model):
     '''blogpost model'''
     title = models.CharField(max_length=255)
     blog = models.TextField()
-    image = models.ImageField(upload_to='blogpost/',default='img.jpg')
+    image = models.ImageField(upload_to='blogpost/',default='img.jpg', blank = True, null =True)
     created = models.DateTimeField(auto_now_add=True)
     likes = models.ManyToManyField(User, related_name='blog_post')
     profile = models.ForeignKey(Profile, on_delete=models.CASCADE)

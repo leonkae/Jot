@@ -50,3 +50,7 @@ def signup(request):
         
         context = {'form':form}
         return render(request, 'jotblog/signup.html', context)
+
+def postBlog(request):
+    '''post blog view'''
+    return render(request,'jotblog/post.html')

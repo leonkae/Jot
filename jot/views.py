@@ -53,4 +53,24 @@ def signup(request):
 
 def postBlog(request):
     '''post blog view'''
+    
+    posts = Blogpost.objects.all()
+    current_user = request.user
+    user_profile = get_object_or_404(Profile,user = current_user)
+    
+    if request.method == 'POST':
+        data = request.POST
+        image = request.FILES.get('image')
+        print('data',data)
+        print('image', image)
+        
+        post = Blogpost.objects.create(
+            title = data['title'],
+            blog = data['blog'],
+            image = image,
+            profile =user_profile ,
+        )
+        post.save()
+        return redirect('home')
+    
     return render(request,'jotblog/post.html')
